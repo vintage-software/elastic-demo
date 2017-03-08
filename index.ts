@@ -1,3 +1,4 @@
 import { CombinedSearch } from './combined-search';
+import { TermsAggs } from './terms-agg';
 
-new CombinedSearch().run();
+new TermsAggs().run();

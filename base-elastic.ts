@@ -74,7 +74,7 @@ export class BaseElastic {
     }
 
     private getAggs(response) {
-        return response.aggs;
+        return JSON.stringify(response.aggregations);
     }
 
     private http(method: string, url: string, body?: any): Promise<any> {
