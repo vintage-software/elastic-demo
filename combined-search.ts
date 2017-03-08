@@ -1,11 +1,11 @@
 import { BaseElastic } from './base-elastic';
 
-export class BasicSearch extends BaseElastic {
+export class CombinedSearch extends BaseElastic {
     run() {
         this.recreateIndex(this.getMapping())
             .then(() => this.indexDocuments(this.getDocuments())
                 .then(() => this.search(this.getQuery())
-                    .then(result => console.log(this.getSearchHits(result)))));
+                    .then(response => this.printResults(response))));
     }
 
     private getMapping() {
@@ -57,11 +57,5 @@ export class BasicSearch extends BaseElastic {
                 boost: 100
             }
         };
-    }
-
-    private getSearchHits(result) {
-        return (<any[]>result.hits.hits)
-            .map(i => i._source)
-            .map(i => i.description);
     }
 }

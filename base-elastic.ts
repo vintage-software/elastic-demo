@@ -22,6 +22,11 @@ export class BaseElastic {
         return this.execute('search', this.http('POST', `${this.typeUrl}/_search`, query));
     }
 
+    protected printResults(response: any) {
+        this.print('hits', this.getHits(response));
+        this.print('aggs', this.getAggs(response));
+    }
+
     protected execute(message: string, request: Promise<any>) {
         return request
             .then(result => {
@@ -62,10 +67,26 @@ export class BaseElastic {
         };
     }
 
+    private getHits(response) {
+        return (<any[]>response.hits.hits)
+            .map(i => i._source)
+            .map(i => i.description);
+    }
+
+    private getAggs(response) {
+        return response.aggs;
+    }
+
     private http(method: string, url: string, body?: any): Promise<any> {
         return fetch(url, {
             method: method,
             body: JSON.stringify(body)
         }).then(response => response && response.json());
+    }
+
+    private print(message: string, value: any) {
+        if (value) {
+            console.log(`${message}:`, value);
+        }
     }
 }

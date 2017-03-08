@@ -1,3 +1,3 @@
-import { BasicSearch } from './basic-search';
+import { CombinedSearch } from './combined-search';
 
-new BasicSearch().run();
+new CombinedSearch().run();
