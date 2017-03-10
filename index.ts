@@ -1,4 +1,6 @@
 import { CombinedSearch } from './combined-search';
-import { TermsAggs } from './terms-agg';
+import { TermsAgg } from './terms-agg';
+import { RecommendAgg } from './recommend-agg';
+import { RecommendAgg2 } from './recommend-agg2';
 
-new TermsAggs().run();
+new RecommendAgg2().run();

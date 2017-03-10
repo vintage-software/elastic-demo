@@ -69,8 +69,7 @@ export class BaseElastic {
 
     private getHits(response) {
         return (<any[]>response.hits.hits)
-            .map(i => i._source)
-            .map(i => i.description);
+            .map(i => i._source);
     }
 
     private getAggs(response) {

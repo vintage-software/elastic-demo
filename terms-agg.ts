@@ -1,6 +1,6 @@
 import { BaseElastic } from './base-elastic';
 
-export class TermsAggs extends BaseElastic {
+export class TermsAgg extends BaseElastic {
     run() {
         this.recreateIndex(this.getMapping())
             .then(() => this.indexDocuments(this.getDocuments())
