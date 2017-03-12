@@ -56,7 +56,7 @@ export class RecommendAgg2 extends BaseElastic {
             aggs: {
                 recommended: {
                     significant_terms: {
-                        field: 'items',
+                        field: 'item',
                         min_doc_count: 1
                     }
                 }

@@ -53,6 +53,11 @@ export class RecommendAgg extends BaseElastic {
                         field: 'items',
                         min_doc_count: 1
                     }
+                },
+                popular: {
+                    terms: {
+                        field: 'items'
+                    }
                 }
             }
         }
